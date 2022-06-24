@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .add_product{
+            width: 350px;
+            margin-left: 50px;
+        }
+        .input_field{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        #add{
+            margin-top: 50px;
+            margin-left: 50%;
+            padding: 5px 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="add_product">
+        <div class="input_field">
+            <label for="">Name</label>
+            <input id="name" type="text">
+        </div>
+
+        <div class="input_field">
+            <label for="">Category</label>
+            <input id="catogery" type="text">
+        </div>
+
+        <div class="input_field">
+            <label for="">Image url</label>
+            <input id="image" type="text">
+        </div>
+
+        <div class="input_field">
+            <label for="">Price</label>
+            <input id="price" type="text">
+        </div>
+
+        <div class="input_field">
+            <label for="">Gender</label>
+            <input id="gender" type="text">
+        </div>
+
+        <button id="add">Submit</button>
+    </div>
+
+
+
+
+    <script>
+
+var dataBase = JSON.parse(localStorage.getItem('Products')) || []
+
+document.getElementById('add').addEventListener('click',(el)=>{
+
+            
+            function Product(name, catogery, image, price, gender){
+
+                this.name = name
+                this.catogery = catogery
+                this.image = image
+                this.price = price
+                this.gender = gender
+                this.sold = false
+
+            }
+
+
+
+            let name = document.getElementById('name').value
+            let catogery = document.getElementById('catogery').value
+            let image = document.getElementById('image').value
+            let price = document.getElementById('price').value
+            let gender = document.getElementById('gender').value
+
+            let product = new Product('Nike XMW1000', 'Shoes', 'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80', 299, 'Male')
+            dataBase.push(product)
+            
+            localStorage.setItem('Products',JSON.stringify(dataBase))
+            location.reload()
+        })
+
+
+
+    </script>
+</body>
+</html>
